@@ -35,15 +35,29 @@ def search_race():
         driver.switch_to.window(driver.window_handles[1])
         time.sleep(0.5)
         #Собирам остальные данные
-        additional_info = driver.find_elements(By.CLASS_NAME, 'article-body__feature')
-        for i in additional_info:
-            print(i.text)
+        # additional_info = driver.find_elements(By.CLASS_NAME, 'article-body__feature')
+        # for i in additional_info:
+        #     print(i.text)
         # blok_text = next((i.text for i in additional_info if "ХИТЫ" in i.text), None)
         # print(blok_text)
         # split_blok = blok_text.split("\n")
         # for i in range(len(split_blok)):
         #     print(i)
-
+        subraces = driver.find_elements(By.CLASS_NAME, "inline-menu__item-wrapper")
+        for subrace in subraces:
+            if 'MPMM' in subrace.text:
+                continue
+            subrace.click()
+            blocks_text = driver.find_elements(By.CLASS_NAME, 'article-body__feature')
+            for block_text in blocks_text:
+                cleaned_text = next((i for i in block_text.text.split('\n') if " " in i), None)
+                if cleaned_text != None:
+                    if "Увеличение характеристик" in cleaned_text:
+                        map_for_json['ability_score_increase'] = cleaned_text
+                    if "Размер" in cleaned_text:
+                        map_for_json['size'] = cleaned_text
+                    if "Языки" in cleaned_text:
+                        map_for_json['languages'] = cleaned_text
         driver.close()
         # Переключаемся на обратно
         driver.switch_to.window(driver.window_handles[0])
