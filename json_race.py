@@ -16,56 +16,61 @@ driver = webdriver.Chrome()
 name_for_json = ['ru', 'en', 'book']
 
 def search_race():
-    driver.get("https://dnd.su/race")
-    elements = driver.find_elements(By.CLASS_NAME, 'col.tile')
+    driver.get("https://dnd.su/point_buy/")
+    time.sleep(0.2)
+    elements = driver.find_elements(By.CLASS_NAME, 'col.tile.calc_tile')
     # Зополняем каждый расу персонажа
     for blok_race in elements:
+        if 'Multiverse' in blok_race.text:
+            continue
+        elif 'TCE' in blok_race.text:
+            continue
         # Создаем необходимые переменные
         map_for_json = {}
         cont = 0
-        if blok_race.text.split('\n')[1] != 'Dwarf':
-            continue
         for text in blok_race.text.split('\n'):
             map_for_json[name_for_json[cont]] = text
             cont += 1
-        # Открываем ссылку в новой вкладке (Ctrl + Click)
-        action = ActionChains(driver)
-        action.key_down(Keys.CONTROL).click(blok_race).key_up(Keys.CONTROL).perform()
-        # Переключаемся на новую вкладку
-        driver.switch_to.window(driver.window_handles[1])
+
+        blok_race.click()
         time.sleep(0.5)
-        #Собирам остальные данные
-        # additional_info = driver.find_elements(By.CLASS_NAME, 'article-body__feature')
-        # for i in additional_info:
-        #     print(i.text)
-        # blok_text = next((i.text for i in additional_info if "ХИТЫ" in i.text), None)
-        # print(blok_text)
-        # split_blok = blok_text.split("\n")
-        # for i in range(len(split_blok)):
-        #     print(i)
-        subraces = driver.find_elements(By.CLASS_NAME, "inline-menu__item-wrapper")
-        for subrace in subraces:
-            if 'MPMM' in subrace.text:
-                continue
-            subrace.click()
-            blocks_text = driver.find_elements(By.CLASS_NAME, 'article-body__feature')
-            for block_text in blocks_text:
-                cleaned_text = next((i for i in block_text.text.split('\n') if " " in i), None)
-                if cleaned_text != None:
-                    if "Увеличение характеристик" in cleaned_text:
-                        map_for_json['ability_score_increase'] = cleaned_text
-                    if "Размер" in cleaned_text:
-                        map_for_json['size'] = cleaned_text
-                    if "Языки" in cleaned_text:
-                        map_for_json['languages'] = cleaned_text
-        driver.close()
-        # Переключаемся на обратно
-        driver.switch_to.window(driver.window_handles[0])
-        write_json_race(map_for_json)
 
+        # Определяем подрасы
+        subraces = []
+        search_subraces = driver.find_element(By.CLASS_NAME, 'calc_page_stats_subrace_list.grid-equalHeight')
+        # Если есть подраса добавить в масив
+        if len(search_subraces.text) != 0:
+            split_subrace = search_subraces.text.split('\n')
+            for i in split_subrace:
+                subraces.append(i)
 
-        if 'Yuan-ti' in map_for_json['en']:
-            break
+        # Получаем характеристики от расы
+        ability = {}
+        if len(subraces) != 0:
+            for subrace in subraces:
+                subrace_click = driver.find_element(By.XPATH, f'//span[text()="{subrace}"]/..')
+                subrace_click.click()
+                ability_score_blok = driver.find_elements(By.CLASS_NAME, 'bonus_stat')
+                character_aray = []
+                for i in ability_score_blok:
+                    character_aray.append(i.text)
+                ability[subrace] = character_aray
+        else:
+            ability_score_blok = driver.find_elements(By.CLASS_NAME, 'bonus_stat')
+            character_aray = []
+            for i in ability_score_blok:
+                character_aray.append(i.text)
+            ability['race'] = character_aray
+
+        # Возвращаемся к списку рас
+        srch_race_button = driver.find_elements(By.CLASS_NAME, 'cbutton.page_button.col.btn.btn-gray')
+        for i in srch_race_button:
+            if 'Раса' in i.text:
+                i.click()
+
+        # Отправляем в json
+        write_json_race(map_for_json, ability, subraces)
+
 
     driver.quit()
 
