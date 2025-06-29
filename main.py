@@ -3,8 +3,8 @@ from json_class import search_class
 from json_spels import search_spells
 
 def main():
-    #search_race()
-    #search_class()
+    search_race()
+    search_class()
     search_spells()
 
 
