@@ -81,6 +81,7 @@ def search_race():
                 for elemnt_speed_split in speed_split_text:
                     if 'фут' in elemnt_speed_split:
                         index_fut = speed_split_text.index(elemnt_speed_split)
+                        break
                 speed_rase = speed_split_text[index_fut-1]
 
         driver.close()
