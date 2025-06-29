@@ -1,10 +1,13 @@
+import re
 import time
+from operator import index
 
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
 
 from write_json import  write_json_race
 
@@ -62,14 +65,34 @@ def search_race():
                 character_aray.append(i.text)
             ability['race'] = character_aray
 
+        second_element = driver.find_element(By.CLASS_NAME, "svg.svg-16.svg--race")
+        action = ActionChains(driver)
+        action.key_down(Keys.CONTROL).click(second_element).key_up(Keys.CONTROL).perform()
+        # Переключаемся на новую вкладку
+        driver.switch_to.window(driver.window_handles[1])
+
+        driver.find_element(By.XPATH, f'//span[text()="{map_for_json['en']}"]/..').click()
+
+        all_text_rase = driver.find_elements(By.TAG_NAME, 'p')
+        for element_with_speed in all_text_rase:
+            if 'Скорость' in element_with_speed.text:
+                print(map_for_json['en'])
+                speed_split_text = element_with_speed.text.split(' ')
+                for elemnt_speed_split in speed_split_text:
+                    if 'фут' in elemnt_speed_split:
+                        index_fut = speed_split_text.index(elemnt_speed_split)
+                speed_rase = speed_split_text[index_fut-1]
+
+        driver.close()
+        driver.switch_to.window(driver.window_handles[0])
+
         # Возвращаемся к списку рас
         srch_race_button = driver.find_elements(By.CLASS_NAME, 'cbutton.page_button.col.btn.btn-gray')
         for i in srch_race_button:
             if 'Раса' in i.text:
                 i.click()
-
         # Отправляем в json
-        write_json_race(map_for_json, ability, subraces)
+        write_json_race(map_for_json, ability, subraces, speed_rase)
 
 
     driver.quit()

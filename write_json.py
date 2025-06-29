@@ -27,7 +27,7 @@ def write_json_class(map_for_json):
 
     os.remove(temp_json_path)
 
-def write_json_race(map_for_json, ability, subraces):
+def write_json_race(map_for_json, ability, subraces, speed_rase):
     # Создаем временый файл
     shutil.copyfile(base_json_race_path, temp_json_path)
 
@@ -38,6 +38,7 @@ def write_json_race(map_for_json, ability, subraces):
     data["book"] = map_for_json["book"]
     data["ability_score_increase"] = ability
     data["subraces"] = subraces
+    data["speed"] = speed_rase
 
     with open(f'data_json/race/{map_for_json["en"]}.json', "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4, ensure_ascii=False)
