@@ -1,0 +1,13 @@
+{
+    "name_ru": "Хобгоблин",
+    "name_en": "Hobgoblin",
+    "book": "VGM",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Телосложение",
+            "+1 к Интеллект"
+        ]
+    },
+    "speed": "30",
+    "subraces": []
+}

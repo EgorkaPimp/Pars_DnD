@@ -1,0 +1,13 @@
+{
+    "name_ru": "Юань-ти",
+    "name_en": "Yuan-ti Pureblood",
+    "book": "VGM",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Харизма",
+            "+1 к Интеллект"
+        ]
+    },
+    "speed": "30",
+    "subraces": []
+}

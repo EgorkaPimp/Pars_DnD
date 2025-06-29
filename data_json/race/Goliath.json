@@ -1,0 +1,13 @@
+{
+    "name_ru": "Голиаф",
+    "name_en": "Goliath",
+    "book": "VGM",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Сила",
+            "+1 к Телосложение"
+        ]
+    },
+    "speed": "30",
+    "subraces": []
+}

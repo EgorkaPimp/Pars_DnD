@@ -1,0 +1,13 @@
+{
+    "name_ru": "Людоящер",
+    "name_en": "Lizardfolk",
+    "book": "VGM",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Телосложение",
+            "+1 к Мудрость"
+        ]
+    },
+    "speed": "30",
+    "subraces": []
+}

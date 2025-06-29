@@ -1,0 +1,13 @@
+{
+    "name_ru": "Калаштар",
+    "name_en": "Kalashtar",
+    "book": "RLW",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Мудрость",
+            "+1 к Харизма"
+        ]
+    },
+    "speed": "30",
+    "subraces": []
+}

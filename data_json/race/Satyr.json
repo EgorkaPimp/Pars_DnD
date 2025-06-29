@@ -1,0 +1,13 @@
+{
+    "name_ru": "Сатир",
+    "name_en": "Satyr",
+    "book": "MOT",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Харизма",
+            "+1 к Ловкость"
+        ]
+    },
+    "speed": "35",
+    "subraces": []
+}

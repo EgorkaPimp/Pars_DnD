@@ -1,0 +1,13 @@
+{
+    "name_ru": "Кентавр",
+    "name_en": "Centaur",
+    "book": "GGR",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Сила",
+            "+1 к Мудрость"
+        ]
+    },
+    "speed": "40",
+    "subraces": []
+}

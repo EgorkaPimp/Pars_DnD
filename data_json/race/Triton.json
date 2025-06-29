@@ -1,0 +1,14 @@
+{
+    "name_ru": "Тритон",
+    "name_en": "Triton",
+    "book": "VGM",
+    "ability_score_increase": {
+        "race": [
+            "+1 к Сила",
+            "+1 к Телосложение",
+            "+1 к Харизма"
+        ]
+    },
+    "speed": "30",
+    "subraces": []
+}

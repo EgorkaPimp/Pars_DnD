@@ -1,0 +1,13 @@
+{
+    "name_ru": "Багбир",
+    "name_en": "Bugbear",
+    "book": "VGM",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Сила",
+            "+1 к Ловкость"
+        ]
+    },
+    "speed": "30",
+    "subraces": []
+}

@@ -1,0 +1,13 @@
+{
+    "name_ru": "Тортл",
+    "name_en": "Tortle",
+    "book": "TP",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Сила",
+            "+1 к Мудрость"
+        ]
+    },
+    "speed": "30",
+    "subraces": []
+}

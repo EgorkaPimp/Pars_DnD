@@ -1,0 +1,13 @@
+{
+    "name_ru": "Табакси",
+    "name_en": "Tabaxi",
+    "book": "VGM",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Ловкость",
+            "+1 к Харизма"
+        ]
+    },
+    "speed": "30",
+    "subraces": []
+}

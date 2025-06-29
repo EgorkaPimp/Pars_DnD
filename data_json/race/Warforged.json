@@ -1,0 +1,13 @@
+{
+    "name_ru": "Кованый",
+    "name_en": "Warforged",
+    "book": "RLW",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Телосложение",
+            "+1 к любой"
+        ]
+    },
+    "speed": "30",
+    "subraces": []
+}

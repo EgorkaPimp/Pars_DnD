@@ -1,0 +1,13 @@
+{
+    "name_ru": "Леонинец",
+    "name_en": "Leonin",
+    "book": "MOT",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Телосложение",
+            "+1 к Сила"
+        ]
+    },
+    "speed": "35",
+    "subraces": []
+}

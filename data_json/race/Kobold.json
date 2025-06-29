@@ -1,0 +1,12 @@
+{
+    "name_ru": "Кобольд",
+    "name_en": "Kobold",
+    "book": "UA",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Ловкость"
+        ]
+    },
+    "speed": "30",
+    "subraces": []
+}

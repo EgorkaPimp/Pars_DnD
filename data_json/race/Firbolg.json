@@ -1,0 +1,13 @@
+{
+    "name_ru": "Фирболг",
+    "name_en": "Firbolg",
+    "book": "VGM",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Мудрость",
+            "+1 к Сила"
+        ]
+    },
+    "speed": "30",
+    "subraces": []
+}

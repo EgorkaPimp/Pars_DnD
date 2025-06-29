@@ -1,0 +1,13 @@
+{
+    "name_ru": "Ааракокра",
+    "name_en": "Aarakocra",
+    "book": "POA",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Ловкость",
+            "+1 к Мудрость"
+        ]
+    },
+    "speed": "25",
+    "subraces": []
+}

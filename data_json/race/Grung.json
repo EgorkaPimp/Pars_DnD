@@ -1,0 +1,13 @@
+{
+    "name_ru": "Грунг",
+    "name_en": "Grung",
+    "book": "OGA",
+    "ability_score_increase": {
+        "race": [
+            "+2 к Ловкость",
+            "+1 к Телосложение"
+        ]
+    },
+    "speed": "25",
+    "subraces": []
+}
